@@ -12,3 +12,32 @@ procesada”. Per exemple, per la operació procesarRegistreUsuari:
 3. Si algun dels camps s’ha deixat en blanc, es mostrarà el missatge “Error al
 registrar usuari”.
 */
+
+#ifndef GESTIO_USUARIS_H
+#define GESTIO_USUARIS_H
+
+#include <iostream>
+#include <string>
+
+class GestioUsuaris {
+public:
+    void procesarRegistreUsuari() {
+        std::string sobrenom, nomComplet;
+        
+        // Demana sobrenom i nom complet
+        std::cout << "Entra el sobrenom: ";
+        std::cin >> sobrenom;
+        std::cout << "Entra el nom complet: ";
+        std::cin.ignore(); // Neteja el buffer
+        std::getline(std::cin, nomComplet);
+
+        // Processa l'entrada i mostra el resultat
+        if (sobrenom.empty() || nomComplet.empty()) {
+            std::cout << "Error al registrar usuari.\n";
+        } else {
+            std::cout << "El registre de l'usuari " << nomComplet << " (" << sobrenom << ") s'ha processat correctament.\n";
+        }
+    }
+};
+
+#endif // GESTIO_USUARIS_H

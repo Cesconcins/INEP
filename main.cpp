@@ -1,4 +1,4 @@
-#include <iostream>
+/*#include <iostream>
 //Nil Ferran
 int main()
 {
@@ -8,7 +8,7 @@ int main()
     std::cout << "Escriu un nombre:";
     std::cin >> entrada;
     std::cout << "Has escollit el nombre " + entrada + "\n";
-}
+}*/
 
 //canvi fet per Ausias Plaza
 
@@ -34,3 +34,39 @@ s’inclouen totes les opcions dels menús:
     4. Tornar
 4. Sortir
 */
+
+
+#include <iostream>
+#include "gestio_usuari.h"
+
+using namespace std;
+
+void mostrarMenuPrincipal() {
+    cout << "Menú principal\n";
+    cout << "1. Registre usuari\n";
+    cout << "2. Sortir\n";
+    cout << "Tria una opció: ";
+}
+
+int main() {
+    int opcio;
+    GestioUsuaris gestioUsuaris;
+
+    do {
+        mostrarMenuPrincipal();
+        cin >> opcio;
+
+        switch (opcio) {
+            case 1: 
+                gestioUsuaris.procesarRegistreUsuari(); 
+                break;
+            case 2: 
+                cout << "Sortint de l'aplicació...\n"; 
+                break;
+            default: 
+                cout << "Opció no vàlida.\n";
+        }
+    } while (opcio != 2);
+
+    return 0;
+}
