@@ -9,3 +9,5 @@ int main()
     std::cin >> entrada;
     std::cout << "Has escollit el nombre " + entrada + "\n";
 }
+
+//canvi Ausias
