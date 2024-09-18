@@ -10,4 +10,4 @@ int main()
     std::cout << "Has escollit el nombre " + entrada + "\n";
 }
 
-//canvi Ausias
+//canvi fet per Ausias Plaza
