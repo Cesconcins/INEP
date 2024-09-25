@@ -70,3 +70,6 @@ int main() {
 
     return 0;
 }
+
+
+// aquest és un comentari fet pel Pau ALcázar, per fer el tercer punt de la primera entrega del Lab d'INEP
