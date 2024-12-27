@@ -62,6 +62,25 @@ void CapaDePresentacio::mostraMenuVisualitzar()
 	cout << "3. Consultar visualitzacions\n";
 	cout << "4. Tornar\n";
 	cout << "Escriu opció: ";
+
+	case 1: { // Visualitzar pel·lícula
+    std::string movieTitle;
+    std::cout << "Introdueix el títol de la pel·lícula: ";
+    std::cin.ignore();
+    std::getline(std::cin, movieTitle);
+    VisualitzaPellicula::visualitza(PetitFlix::getLoggedInUser(), movieTitle);
+    break;
+	}
+
+	case 2: { // Visualitzar capítol
+    std::string seriesTitle;
+    std::cout << "Introdueix el títol de la sèrie: ";
+    std::cin.ignore();
+    std::getline(std::cin, seriesTitle);
+    VisualitzaCapitol::visualitza(PetitFlix::getLoggedInUser(), seriesTitle);
+    break;
+	}
+
 }
 
 void CapaDePresentacio::mostraMenuConsultes()

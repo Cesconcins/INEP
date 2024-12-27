@@ -15,4 +15,12 @@ using json = nlohmann::json;
 sql::Connection* open_connection();
 void close_connection(sql::Connection *conn, sql::Statement* stmt, sql::ResultSet* res);
 
+sql::ResultSet* fetchMovieDetails(const std::string& title);
+void recordMovieVisualization(const std::string& userNickname, const std::string& title);
+
+sql::ResultSet* fetchSeasons(const std::string& seriesTitle);
+sql::ResultSet* fetchEpisodes(const std::string& seriesTitle, int seasonNumber);
+void recordEpisodeVisualization(const std::string& userNickname, const std::string& seriesTitle, int seasonNumber, int episodeNumber);
+
+
 #endif

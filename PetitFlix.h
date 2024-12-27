@@ -20,6 +20,9 @@ public:
 	void tancaSessio();
 
 	bool isLoggedIn();
+
+	std::string getLoggedInUser();
+
 };
 
 #endif

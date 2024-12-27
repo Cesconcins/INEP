@@ -8,3 +8,7 @@ bool PetitFlix::isLoggedIn()
 {
 	return this->loggedIn;
 }
+
+std::string PetitFlix::getLoggedInUser() {
+    return this->usuari.obteSobrenom();
+}
