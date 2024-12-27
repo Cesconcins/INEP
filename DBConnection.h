@@ -13,6 +13,6 @@ using json = nlohmann::json;
 
 // Function declarations
 sql::Connection* open_connection();
-void close_connection(sql::Connection* conn);
+void close_connection(sql::Connection *conn, sql::Statement* stmt, sql::ResultSet* res);
 
 #endif

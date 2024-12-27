@@ -1,21 +1,23 @@
 CC = g++
 CFLAGS = -Wall -g
 
+# Automatically find all source files
+SOURCES := $(wildcard *.cpp)
+OBJECTS := $(SOURCES:.cpp=.o)
+DEPS := $(OBJECTS:.o=.d)
+
 # Targets
-main: main.o DBConnection.o Menus.o
-	$(CC) $(CFLAGS) -o main main.o DBConnection.o Menus.o -lmysqlcppconn
+main: $(OBJECTS)
+	$(CC) $(CFLAGS) -o main $(OBJECTS) -lmysqlcppconn
 
-main.o: main.cpp
-	$(CC) $(CFLAGS) -c main.cpp
+# Compilation rules with dependency generation
+%.o: %.cpp
+	$(CC) $(CFLAGS) -MD -MP -c $< -o $@
 
-DBConnection.o: DBConnection.cpp
-	$(CC) $(CFLAGS) -c DBConnection.cpp
-
-Menus.o: Menus.cpp
-	$(CC) $(CFLAGS) -c Menus.cpp
+# Include the generated dependency files
+-include $(DEPS)
 
 # Clean build artifacts
 .PHONY: clean
 clean:
-	rm -rf *.o main
-
+	rm -rf *.o *.d main

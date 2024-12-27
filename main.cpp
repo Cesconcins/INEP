@@ -1,29 +1,45 @@
 #include <iostream>
-#include "DBConnection.h"
-#include "mainMenu.h"
+#include <unistd.h>
+#include <stdlib.h> 
+#include "CapaDePresentacio.h"
+#include "PetitFlix.h"
 
 using namespace std;
 
 int main() {
-    sql::Connection* conn = open_connection();
+    CapaDePresentacio capaP;
+    PetitFlix pF;
     int opcio;
 
     do {
-        mostraMenuPrincipalNoLogin();
-        cin >> opcio;
+        if (pF.isLoggedIn()) {
+            capaP.mostraMenuPrincipalNoLogin();
 
-        switch (opcio) {
-            case 1:
-                // do IniciaSessió
-            case 2:
-                // do RegistraUsuari
-            case 3:
-                // do consultes
-            default:
-                cout << "Opció no vàlida.\n";
+            if (opcio == 4) {
+                break; 
+            }
+
+            switch (opcio) {
+                case 1:
+                    capaP.iniciaSessio();
+                    break;
+                case 2:
+                    // do RegistraUsuari
+                    break;
+                case 3:
+                    // do consultes
+                    break;
+                default:
+                    cout << "Opció no vàlida.\n";
+                    break;
+            }
+            sleep(4);
+            system("clear");
+        } else {
+            capaP.mostraMenuPrincipalLogin();
         }
-    } while (opcio != 4);
+        
+    } while (cin >> opcio);
 
-    close_connection(conn);
     return 0;
 }
