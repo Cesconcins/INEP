@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <ctime>
-#include "DBConnection.h"
+#include "../sistema/DBConnection.h"
 using namespace std;
 
 class PassarellaUsuari {
@@ -18,6 +18,7 @@ private:
 public:
 	PassarellaUsuari() : sobrenom(""), nom(""), contrasenya(""), correuElectronic(""), dataNaixement(0), modalitatSubscripcio("") {}
 	PassarellaUsuari(std::string sobrenom);
+	~PassarellaUsuari();
 
 	std::string obteSobrenom();
 	std::string obteNom();

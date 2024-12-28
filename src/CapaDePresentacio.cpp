@@ -1,5 +1,4 @@
 #include "CapaDePresentacio.h"
-#include "TxIniciSessio.h"
 
 void CapaDePresentacio::mostraMenuPrincipalNoLogin()
 {
@@ -13,7 +12,7 @@ void CapaDePresentacio::mostraMenuPrincipalNoLogin()
 	cout << "Escriu opció: ";
 }
 
-void CapaDePresentacio::iniciaSessio()
+void CapaDePresentacio::iniciaSessio(PetitFlix &pF)
 {
 	std::string sU, cU;
 	system("clear");
@@ -22,9 +21,8 @@ void CapaDePresentacio::iniciaSessio()
 	cout << "Contrasenya: "; cin >> cU;
 	
 	TxIniciSessio TxIni(sU, cU);
-	if (!TxIni.executar()) {
-		cout << "Hi ha hagut un error amb el Sobrenom o la contrasenya.\n";
-	}
+	if (!TxIni.executar(pF)) cout << "Hi ha hagut un error amb el Sobrenom o la contrasenya.\n";
+	else cout << "Sessio iniciada correctament!\n";
 }
 
 void CapaDePresentacio::mostraMenuPrincipalLogin()
@@ -39,6 +37,22 @@ void CapaDePresentacio::mostraMenuPrincipalLogin()
 	cout << "5. Sortir\n";
 	cout << "Escriu opció: ";
 }
+
+void CapaDePresentacio::tancaSessio(PetitFlix &pF)
+{
+	char opcio;
+	system("clear");
+	cout << "** Tancar sessio **\n";
+	cout << "Vols tancar la sessio (S/N): ";
+	cin >> opcio;
+	
+	if (opcio == 'S' || opcio == 's') {
+		TxTancaSessio txTanca;
+		txTanca.executar(pF);
+		cout << "Sessio tancada correctament!\n";
+	} else cout << "No s'ha tancat la sessio.\n";
+}
+
 
 void CapaDePresentacio::mostraMenuGestioUsuari()
 {
@@ -62,7 +76,7 @@ void CapaDePresentacio::mostraMenuVisualitzar()
 	cout << "3. Consultar visualitzacions\n";
 	cout << "4. Tornar\n";
 	cout << "Escriu opció: ";
-
+/*
 	case 1: { // Visualitzar pel·lícula
     std::string movieTitle;
     std::cout << "Introdueix el títol de la pel·lícula: ";
@@ -80,7 +94,7 @@ void CapaDePresentacio::mostraMenuVisualitzar()
     VisualitzaCapitol::visualitza(PetitFlix::getLoggedInUser(), seriesTitle);
     break;
 	}
-
+*/
 }
 
 void CapaDePresentacio::mostraMenuConsultes()

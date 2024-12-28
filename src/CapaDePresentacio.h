@@ -3,7 +3,11 @@
 
 #include <iostream>
 #include <stdlib.h> 
-#include <mysql_connection.h>
+#include <ctime>
+
+#include "../transaccions/TxIniciSessio.h"
+#include "../transaccions/TxTancaSessio.h"
+#include "../sistema/PetitFlix.h"
 using namespace std;
 
 class CapaDePresentacio {
@@ -11,9 +15,11 @@ class CapaDePresentacio {
 public:
 	static void mostraMenuPrincipalNoLogin();
 
-	static void iniciaSessio();
+	static void iniciaSessio(PetitFlix &pF);
 
 	static void mostraMenuPrincipalLogin();
+	
+	static void tancaSessio(PetitFlix &pF);
 
 	static void mostraMenuGestioUsuari();
 

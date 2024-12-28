@@ -2,9 +2,10 @@
 #define TX_INICI_SESSIO_H
 
 #include <iostream>
-#include "CercadoraUsuari.h"
-#include "PassarellaUsuari.h"
-#include "Usuari.h"
+#include "../cercadors/CercadoraUsuari.h"
+#include "../passareles/PassarellaUsuari.h"
+#include "../sistema/Usuari.h"
+#include "../sistema/PetitFlix.h"
 using namespace std;
 
 class TxIniciSessio {
@@ -14,7 +15,7 @@ private:
 
 public:
 	TxIniciSessio(std::string sU, std::string cU);
-	bool executar();
+	bool executar(PetitFlix &pF);
 
 };
 

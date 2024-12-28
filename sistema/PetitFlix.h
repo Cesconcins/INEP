@@ -5,7 +5,7 @@
 using namespace std;
 
 #include "Usuari.h"
-#include "PassarellaUsuari.h"
+#include "../passareles/PassarellaUsuari.h"
 
 class PetitFlix {
 private:
@@ -16,7 +16,7 @@ public:
 	PetitFlix() : usuari(PassarellaUsuari()), loggedIn(false) {};
 
 	Usuari obteUsuari();
-	void iniciaSessio(Usuari u);
+	void iniciaSessio(Usuari &u);
 	void tancaSessio();
 
 	bool isLoggedIn();

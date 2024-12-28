@@ -4,7 +4,7 @@ sql::Connection* open_connection()
 {
     try {
         // Leer archivo de configuración JSON
-        std::ifstream config_file("db_config.json");
+        std::ifstream config_file("sistema/db_config.json");
         if (!config_file.is_open()) {
             throw std::runtime_error("No se pudo abrir el archivo de configuración.");
         }
@@ -23,7 +23,7 @@ sql::Connection* open_connection()
         // Seleccionar base de datos
         conn->setSchema("inep21");
         if (conn->isValid()) {
-            std::cout << "Connection established successfully." << std::endl;
+            //std::cout << "Connection established successfully." << std::endl;
             return conn;
         }
 
@@ -47,15 +47,15 @@ void close_connection(sql::Connection *conn, sql::Statement* stmt, sql::ResultSe
     } catch (const std::exception &e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
-    std::cout << "Connection closed successfully." << std::endl;
+    //std::cout << "Connection closed successfully." << std::endl;
 }
-
+/*
 sql::ResultSet* fetchMovieDetails(const std::string& title) {
     try {
         sql::Connection* conn = open_connection();
-        sql::PreparedStatement* pstmt = conn->prepareStatement(
-            "SELECT * FROM pelicula WHERE titol = ?");
+        sql::PreparedStatement* pstmt = conn->prepareStatement("SELECT * FROM pelicula WHERE titol = ?");
         pstmt->setString(1, title);
+        
         sql::ResultSet* res = pstmt->executeQuery();
         return res; // Caller must close this ResultSet.
     } catch (sql::SQLException& e) {
@@ -80,7 +80,7 @@ void recordMovieVisualization(const std::string& userNickname, const std::string
     }
 }
 
-sql::ResultSet* DBConnection::fetchSeasons(const std::string& seriesTitle) {
+sql::ResultSet* fetchSeasons(const std::string& seriesTitle) {
     try {
         sql::Connection* conn = open_connection();
         sql::PreparedStatement* pstmt = conn->prepareStatement(
@@ -93,7 +93,7 @@ sql::ResultSet* DBConnection::fetchSeasons(const std::string& seriesTitle) {
     }
 }
 
-sql::ResultSet* DBConnection::fetchEpisodes(const std::string& seriesTitle, int seasonNumber) {
+sql::ResultSet* fetchEpisodes(const std::string& seriesTitle, int seasonNumber) {
     try {
         sql::Connection* conn = open_connection();
         sql::PreparedStatement* pstmt = conn->prepareStatement(
@@ -107,7 +107,7 @@ sql::ResultSet* DBConnection::fetchEpisodes(const std::string& seriesTitle, int 
     }
 }
 
-void DBConnection::recordEpisodeVisualization(const std::string& userNickname, const std::string& seriesTitle, int seasonNumber, int episodeNumber) {
+void recordEpisodeVisualization(const std::string& userNickname, const std::string& seriesTitle, int seasonNumber, int episodeNumber) {
     try {
         sql::Connection* conn = open_connection();
         sql::PreparedStatement* pstmt = conn->prepareStatement(
@@ -124,3 +124,4 @@ void DBConnection::recordEpisodeVisualization(const std::string& userNickname, c
         std::cerr << "SQL Error: " << e.what() << std::endl;
     }
 }
+*/

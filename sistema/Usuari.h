@@ -17,6 +17,7 @@ public:
 	Usuari() : sobrenom(""), nom(""), correuElectronic(""), dataNaixement(0), modalitat("") {}
 	Usuari(std::string sobrenom, std::string nom, std::string correu, std::time_t dataNaixement, std::string modalitat);
 
+	std::string obteSobrenom();
 };
 
 #endif

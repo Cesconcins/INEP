@@ -8,3 +8,8 @@ Usuari::Usuari(std::string sobrenom, std::string nom, std::string correu, std::t
 	this->dataNaixement = dataNaixement;
 	this->modalitat = modalitat;
 }
+
+std::string Usuari::obteSobrenom()
+{
+	return this->sobrenom;
+}
