@@ -31,11 +31,21 @@ void CapaDePresentacio::registrarUsuari()
 	std::string nU, sU, cU, ceU, dnU_string;
 	int msU_int = 0;
 	cout << "** Registrar usuari **\n";
-	cout << "Nom complet: "; cin >> nU;
-	cout << "Sobrenom: "; cin >> sU;
-	cout << "Contrasenya: "; cin >> cU;
-	cout << "Correu electronic: "; cin >> ceU;
-	cout << "Data naixement (DD/MM/AAAA): "; cin >> dnU_string;
+	cout << "Nom complet: ";
+	cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	getline(cin, nU);
+
+	cout << "Sobrenom: ";
+	cin >> sU;
+
+	cout << "Contrasenya: ";
+	cin >> cU;
+
+	cout << "Correu electronic: ";
+	cin >> ceU;
+
+	cout << "Data naixement (DD/MM/AAAA): ";
+	cin >> dnU_string;
 	
 	time_t dnU;
 	try {
@@ -127,57 +137,150 @@ void CapaDePresentacio::tancaSessio(PetitFlix &pF)
 }
 
 
-void CapaDePresentacio::mostraMenuGestioUsuari()
+void CapaDePresentacio::mostraMenuGestioUsuari(PetitFlix &pF)
 {
-	cout << "*********************\n";
-	cout << "    Menu Principal   \n";
-	cout << "*********************\n";
-	cout << "1. Consulta usuari\n";
-	cout << "2. Modifica usuari\n";
-	cout << "3. Esborra usuari\n";
-	cout << "4. Tornar\n";
-	cout << "Escriu opció: ";
+	int opcio;
+	do {
+		system("clear");
+		cout << "*********************\n";
+		cout << "    Menu Principal   \n";
+		cout << "*********************\n";
+		cout << "1. Consulta usuari\n";
+		cout << "2. Modifica usuari\n";
+		cout << "3. Esborra usuari\n";
+		cout << "4. Tornar\n";
+		cout << "Escriu opció: ";
+		cin >> opcio;
+		
+		if (cin.fail()) {
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cout << "Opció no vàlida. Torna-ho a intentar.\n";
+            continue;
+        }
+		
+		switch (opcio) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				esborraUsuari(pF);
+				if (!pF.isLoggedIn()) return;
+				break;
+			case 4:
+				return;
+			default:
+				cout << "Opció no vàlida.\n";
+				break;
+		}
+	} while (true);
+	
+	return;
+}
+
+void CapaDePresentacio::esborraUsuari(PetitFlix &pF)
+{
+	system("clear");
+	std::string contr;
+	cout << "** Esborrar usuari **\n";
+	cout << "Per confirmar l'esborrat, s'ha d'entrar la contrasenya ...\n";
+	cout << "Contrasenya: "; cin >> contr;
+	//std::string contr = getHiddenInput("Contrasenya: ");
+	//cout << contr << endl;
+	TxEsborraUsuari TxEsb(contr);
+	if (TxEsb.executar(pF)) {
+		cout << "L'usuari s'ha esborrat correctament!\n";
+		cout << "Tancant la sessió ...\n";
+		sleep(2.5);
+	} else {
+		cout << "La contrasenya no és correcta, l'usuari no s'ha esborrat.\n";
+		sleep(2.5);
+	}
+	return;
+}
+
+std::string CapaDePresentacio::getHiddenInput(const std::string& prompt) {
+    std::cout << prompt;
+    // Turn off terminal echo
+    termios oldt, newt;
+    tcgetattr(STDIN_FILENO, &oldt); // Save old terminal settings
+    newt = oldt;
+    newt.c_lflag &= ~ECHO;         // Disable echo
+    tcsetattr(STDIN_FILENO, TCSANOW, &newt); // Apply new settings
+
+    std::string input;
+    std::getline(std::cin, input); // Use getline to properly handle input
+
+    // Restore terminal settings
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldt);
+    std::cout << std::endl; // Add a newline for better UX
+
+    return input;
 }
 
 void CapaDePresentacio::mostraMenuVisualitzar()
 {
-	cout << "*********************\n";
-	cout << "    Menu Principal   \n";
-	cout << "*********************\n";
-	cout << "1. Visualitzar pel·lícula\n";
-	cout << "2. Visualitzar capítol\n";
-	cout << "3. Consultar visualitzacions\n";
-	cout << "4. Tornar\n";
-	cout << "Escriu opció: ";
-/*
-	case 1: { // Visualitzar pel·lícula
-    std::string movieTitle;
-    std::cout << "Introdueix el títol de la pel·lícula: ";
-    std::cin.ignore();
-    std::getline(std::cin, movieTitle);
-    VisualitzaPellicula::visualitza(PetitFlix::getLoggedInUser(), movieTitle);
-    break;
-	}
-
-	case 2: { // Visualitzar capítol
-    std::string seriesTitle;
-    std::cout << "Introdueix el títol de la sèrie: ";
-    std::cin.ignore();
-    std::getline(std::cin, seriesTitle);
-    VisualitzaCapitol::visualitza(PetitFlix::getLoggedInUser(), seriesTitle);
-    break;
-	}
-*/
+	int opcio;
+	do {
+		system("clear");
+		cout << "*********************\n";
+		cout << "    Menu Principal   \n";
+		cout << "*********************\n";
+		cout << "1. Visualitzar pel·lícula\n";
+		cout << "2. Visualitzar capítol\n";
+		cout << "3. Consultar visualitzacions\n";
+		cout << "4. Tornar\n";
+		cout << "Escriu opció: ";
+		cin >> opcio;
+		
+		switch (opcio) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				return;
+			default:
+				cout << "Opció no vàlida.\n";
+				break;
+		}
+	} while (true);
+	
+	return;
 }
 
 void CapaDePresentacio::mostraMenuConsultes()
 {
-	cout << "*********************\n";
-	cout << "    Menu Principal   \n";
-	cout << "*********************\n";
-	cout << "1. Properes Estrenes\n";
-	cout << "2. Últimes novetats\n";
-	cout << "3. Pel·lícules més vistes\n";
-	cout << "4. Tornar\n";
-	cout << "Escriu opció: ";
+	int opcio;
+	do {
+		system("clear");
+		cout << "*********************\n";
+		cout << "    Menu Principal   \n";
+		cout << "*********************\n";
+		cout << "1. Properes Estrenes\n";
+		cout << "2. Últimes novetats\n";
+		cout << "3. Pel·lícules més vistes\n";
+		cout << "4. Tornar\n";
+		cout << "Escriu opció: ";
+		cin >> opcio;
+		
+		switch (opcio) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				return;
+			default:
+				cout << "Opció no vàlida.\n";
+				break;
+		}
+	} while (true);
+	
+	return;
 }

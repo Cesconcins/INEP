@@ -17,7 +17,7 @@ private:
 
 public:
 	PassarellaUsuari() : sobrenom(""), nom(""), contrasenya(""), correuElectronic(""), dataNaixement(0), modalitatSubscripcio("") {}
-	PassarellaUsuari(std::string sobrenom, std::string nom, std::string contrasenya, std::string correuElectronic, std::time_t dataNaixement, std::string modalitatSubscripcio);
+	PassarellaUsuari(std::string nom, std::string sobrenom, std::string contrasenya, std::string correuElectronic, std::time_t dataNaixement, std::string modalitatSubscripcio);
 	PassarellaUsuari(std::string sobrenom);
 	~PassarellaUsuari();
 

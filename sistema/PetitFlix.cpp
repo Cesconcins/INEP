@@ -1,6 +1,9 @@
 #include "PetitFlix.h"
 
-Usuari PetitFlix::obteUsuari(){}
+PassarellaUsuari PetitFlix::obteUsuari()
+{
+	return usuari;
+}
 
 void PetitFlix::iniciaSessio(Usuari &u)
 {

@@ -37,7 +37,7 @@ PassarellaUsuari::PassarellaUsuari(std::string sobrenom)
     }
 }
 
-PassarellaUsuari::PassarellaUsuari(std::string sobrenom, std::string nom, std::string contrasenya, std::string correuElectronic, std::time_t dataNaixement, std::string modalitatSubscripcio)
+PassarellaUsuari::PassarellaUsuari(std::string nom, std::string sobrenom, std::string contrasenya, std::string correuElectronic, std::time_t dataNaixement, std::string modalitatSubscripcio)
 {
 	this->sobrenom = sobrenom;
 	this->nom = nom;
@@ -144,5 +144,18 @@ sql::SQLString PassarellaUsuari::timeToSQLString(time_t t) {
     return sql::SQLString(buffer);
 }
 
-//SQL Error: Unknown column 'subscripcio' in 'where clause'
+void PassarellaUsuari::esborra()
+{
+	try {
+		sql::Connection* conn = open_connection();
+		sql::PreparedStatement* pstmt = conn->prepareStatement("DELETE FROM `inep21`.`usuari` WHERE (`sobrenom` = ?)");
+		pstmt->setString(1, this->sobrenom);
+		
+		sql::ResultSet* res = pstmt->executeQuery();
+		
+		close_connection(conn, pstmt, res);
+	} catch (sql::SQLException& e) {
+        std::cerr << "SQL Error: " << e.what() << std::endl;
+    }
+}
 

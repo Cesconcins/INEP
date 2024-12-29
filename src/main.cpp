@@ -46,13 +46,15 @@ int main() {
             }
             std::system("clear");
         } else {
-            // Add logic for logged-in menu actions if needed
             switch (opcio) {
                 case 1:
+                	capaP.mostraMenuGestioUsuari(pF);
                     break;
                 case 2:
+                	capaP.mostraMenuVisualitzar();
                     break;
                 case 3:
+                	capaP.mostraMenuConsultes();
                 	break;
                 case 4:
                 	capaP.tancaSessio(pF);

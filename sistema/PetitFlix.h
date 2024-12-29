@@ -15,7 +15,7 @@ private:
 public:
 	PetitFlix() : usuari(PassarellaUsuari()), loggedIn(false) {};
 
-	Usuari obteUsuari();
+	PassarellaUsuari obteUsuari();
 	void iniciaSessio(Usuari &u);
 	void tancaSessio();
 
