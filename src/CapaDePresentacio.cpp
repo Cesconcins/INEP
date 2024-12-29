@@ -153,6 +153,7 @@ void CapaDePresentacio::mostraMenuGestioUsuari(PetitFlix &pF)
 		switch (opcio)
 		{
 		case 1:
+			consultaUsuari(pF);
 			break;
 		case 2:
 			modificaUsuari(pF);
@@ -172,6 +173,34 @@ void CapaDePresentacio::mostraMenuGestioUsuari(PetitFlix &pF)
 	} while (true);
 
 	return;
+}
+
+void CapaDePresentacio::consultaUsuari(PetitFlix &pF)
+{
+	system("clear");
+	TxConsultaUsuari TxCons;
+	TxCons.executar(pF);
+	Usuari infoU = TxCons.obteResultat();
+
+	TxInfoVisualitzacions TxInfo;
+	TxInfo.executar(pF);
+	std::pair infoVisualitzacions = TxInfo.obteResultat();
+
+	cout << "** Modifica usuari **\n";
+	cout << "Nom complet: " + infoU.obteNom() + "\n";
+	cout << "Sobrenom: " + infoU.obteSobrenom() + "\n";
+	cout << "Correu electronic: " + infoU.obteCorreuElectronic() + "\n";
+	cout << "Data naixement: " + infoU.obteDataNaixement() + "\n";
+	cout << "Modalitat subscripció: " + infoU.obteModalitat() + "\n";
+
+	cout << "\n"
+		 << infoVisualitzacions.first << " pel·licules visualitzades";
+	cout << "\n"
+		 << infoVisualitzacions.second << " capítols visualitzats";
+
+	std::string intro;
+	cin.ignore();
+	std::getline(cin, intro);
 }
 
 void CapaDePresentacio::modificaUsuari(PetitFlix &pF)

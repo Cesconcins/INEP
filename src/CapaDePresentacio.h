@@ -12,6 +12,8 @@
 #include "../transaccions/TxTancaSessio.h"
 #include "../transaccions/TxRegistraUsuari.h"
 #include "../transaccions/TxEsborraUsuari.h"
+#include "../transaccions/TxConsultaUsuari.h"
+#include "../transaccions/TxInfoVisualitzacions.h"
 #include "../transaccions/CtrlModificaUsuari.h"
 #include "../sistema/PetitFlix.h"
 using namespace std;
@@ -31,6 +33,8 @@ public:
 	void tancaSessio(PetitFlix &pF);
 
 	void mostraMenuGestioUsuari(PetitFlix &pF);
+
+	void consultaUsuari(PetitFlix &pF);
 
 	void modificaUsuari(PetitFlix &pF);
 
