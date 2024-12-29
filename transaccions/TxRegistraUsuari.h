@@ -6,19 +6,19 @@
 #include "../passareles/PassarellaUsuari.h"
 using namespace std;
 
-class TxRegistraUsuari {
+class TxRegistraUsuari
+{
 private:
 	std::string nomU;
 	std::string sobrenomU;
 	std::string contrasenyaU;
 	std::string correuElectronicU;
-	std::time_t dataNaixementU;
+	std::string dataNaixementU;
 	std::string modalitatSubscripcio;
-	
+
 public:
-	TxRegistraUsuari(std::string nU, std::string sU, std::string cU, std::string ceU, std::time_t dnU, std::string msU);
+	TxRegistraUsuari(std::string nU, std::string sU, std::string cU, std::string ceU, std::string dnU, std::string msU);
 	int executar();
-	
 };
 
 #endif

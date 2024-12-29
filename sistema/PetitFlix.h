@@ -20,6 +20,7 @@ public:
 	void tancaSessio();
 
 	bool isLoggedIn();
+	void modificaU(PassarellaUsuari u);
 
 	std::string getLoggedInUser();
 

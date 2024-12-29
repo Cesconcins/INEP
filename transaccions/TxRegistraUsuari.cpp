@@ -1,6 +1,6 @@
 #include "TxRegistraUsuari.h"
 
-TxRegistraUsuari::TxRegistraUsuari(std::string nU, std::string sU, std::string cU, std::string ceU, std::time_t dnU, std::string msU)
+TxRegistraUsuari::TxRegistraUsuari(std::string nU, std::string sU, std::string cU, std::string ceU, std::string dnU, std::string msU)
 {
 	this->nomU = nU;
 	this->sobrenomU = sU;
@@ -9,7 +9,7 @@ TxRegistraUsuari::TxRegistraUsuari(std::string nU, std::string sU, std::string c
 	this->dataNaixementU = dnU;
 	this->modalitatSubscripcio = msU;
 }
-	
+
 int TxRegistraUsuari::executar()
 {
 	PassarellaUsuari pU(this->nomU, this->sobrenomU, this->contrasenyaU, this->correuElectronicU, this->dataNaixementU, this->modalitatSubscripcio);

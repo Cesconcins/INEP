@@ -1,6 +1,6 @@
 #include "Usuari.h"
 
-Usuari::Usuari(std::string sobrenom, std::string nom, std::string correu, std::time_t dataNaixement, std::string modalitat)
+Usuari::Usuari(std::string sobrenom, std::string nom, std::string correu, std::string dataNaixement, std::string modalitat)
 {
 	this->sobrenom = sobrenom;
 	this->nom = nom;
@@ -12,4 +12,25 @@ Usuari::Usuari(std::string sobrenom, std::string nom, std::string correu, std::t
 std::string Usuari::obteSobrenom()
 {
 	return this->sobrenom;
+}
+
+std::string Usuari::obteNom()
+{
+	return this->nom;
+}
+
+std::string Usuari::obteCorreuElectronic()
+{
+	return this->correuElectronic;
+}
+
+std::string Usuari::obteDataNaixement()
+{
+	return this->dataNaixement;
+}
+
+
+std::string Usuari::obteModalitat()
+{
+	return this->modalitat;
 }
