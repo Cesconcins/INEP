@@ -36,11 +36,11 @@ sql::Connection* open_connection()
     return nullptr;
 }
 
-void close_connection(sql::Connection *conn, sql::Statement* stmt, sql::ResultSet* res)
+void close_connection(sql::Connection *conn, sql::PreparedStatement* pstmt, sql::ResultSet* res)
 {
     try {
         delete conn;
-        delete stmt;
+        delete pstmt;
         delete res;
     } catch (const sql::SQLException &e) {
         std::cerr << "Error SQL: " << e.what() << std::endl;

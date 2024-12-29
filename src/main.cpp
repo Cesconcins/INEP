@@ -32,6 +32,8 @@ int main() {
                     sleep(2);
                     break;
                 case 2:
+                	capaP.registrarUsuari();
+                	sleep(3);
                     break;
                 case 3:
                     break;

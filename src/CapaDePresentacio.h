@@ -7,25 +7,30 @@
 
 #include "../transaccions/TxIniciSessio.h"
 #include "../transaccions/TxTancaSessio.h"
+#include "../transaccions/TxRegistraUsuari.h"
 #include "../sistema/PetitFlix.h"
 using namespace std;
 
 class CapaDePresentacio {
 
 public:
-	static void mostraMenuPrincipalNoLogin();
+	void mostraMenuPrincipalNoLogin();
 
-	static void iniciaSessio(PetitFlix &pF);
-
-	static void mostraMenuPrincipalLogin();
+	void iniciaSessio(PetitFlix &pF);
 	
-	static void tancaSessio(PetitFlix &pF);
+	void registrarUsuari();
+	
+	static time_t stringToTimeT(const std::string& dateStr);
 
-	static void mostraMenuGestioUsuari();
+	void mostraMenuPrincipalLogin();
+	
+	void tancaSessio(PetitFlix &pF);
 
-	static void mostraMenuVisualitzar();
+	void mostraMenuGestioUsuari();
 
-	static void mostraMenuConsultes();
+	void mostraMenuVisualitzar();
+
+	void mostraMenuConsultes();
 };
 
 #endif

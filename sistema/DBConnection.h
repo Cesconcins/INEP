@@ -15,7 +15,7 @@ using json = nlohmann::json;
 
 // Function declarations
 sql::Connection* open_connection();
-void close_connection(sql::Connection *conn, sql::Statement* stmt, sql::ResultSet* res);
+void close_connection(sql::Connection *conn, sql::PreparedStatement* pstmt, sql::ResultSet* res);
 
 sql::ResultSet* fetchMovieDetails(const std::string& title);
 void recordMovieVisualization(const std::string& userNickname, const std::string& title);
