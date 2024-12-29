@@ -4,12 +4,15 @@
 #include <iostream>
 #include <ctime>
 #include "../sistema/Usuari.h"
-#include "../passareles/PassarellaUsuari.h"
+#include "../sistema/DBConnection.h"
 using namespace std;
 
-class CercadoraUsuari {
+class CercadoraUsuari
+{
 public:
-	Usuari cercaUsuari(std::string sobrenomU, PassarellaUsuari& pasU);
+	CercadoraUsuari();
+
+	Usuari cercaUsuari(std::string sobrenomU);
 };
 
 #endif

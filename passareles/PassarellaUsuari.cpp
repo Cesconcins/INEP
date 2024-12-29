@@ -134,7 +134,9 @@ int PassarellaUsuari::insereix()
 			return -30;
 		}
 
-		std::string sqlSafe = convertToSQLDate(this->dataNaixement);
+		std::string sqlSafe = this->dataNaixement;
+		if (!isDateValid(this->dataNaixement))
+			sqlSafe = convertToSQLDate(this->dataNaixement);
 		sql::PreparedStatement *pstmt_insert = conn->prepareStatement("INSERT INTO inep21.usuari(sobrenom, nom, contrasenya, correu_electronic, data_naixement, subscripcio) VALUES (?, ?, ?, ?, ?, ?)");
 
 		pstmt_insert->setString(1, this->sobrenom);
