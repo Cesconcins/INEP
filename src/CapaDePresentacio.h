@@ -45,6 +45,12 @@ public:
 	void mostraMenuVisualitzar();
 
 	void mostraMenuConsultes();
+
+	void visualitzaPelicula();
+
+	void visualitzaCapitol();
+
+	void consultaVisualitzacions();
 };
 
 #endif

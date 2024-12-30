@@ -321,10 +321,13 @@ void CapaDePresentacio::mostraMenuVisualitzar()
 		switch (opcio)
 		{
 		case 1:
+			visualitzaPelicula();
 			break;
 		case 2:
+			visualitzaCapitol();
 			break;
 		case 3:
+			consultaVisualitzacions();
 			break;
 		case 4:
 			return;
@@ -336,6 +339,100 @@ void CapaDePresentacio::mostraMenuVisualitzar()
 
 	return;
 }
+
+void CapaDePresentacio::visualitzaPelicula()
+{
+    system("clear");
+    std::string titolPelicula;
+    cout << "** Visualitzar Pel·lícula **\n";
+    cout << "Introdueix el títol de la pel·lícula: ";
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    getline(cin, titolPelicula);
+
+    try
+    {
+        TxVisualitzaPelicula tx(titolPelicula);
+        if (tx.executar())
+        {
+            cout << "Pel·lícula visualitzada correctament!\n";
+        }
+    }
+    catch (const PeliculaNoExisteix &e)
+    {
+        cout << "Error: La pel·lícula no existeix.\n";
+    }
+    catch (const ErrorEdatInadequada &e)
+    {
+        cout << "Error: No tens l'edat adequada per veure aquesta pel·lícula.\n";
+    }
+    catch (const PeliculaNoEstrenada &e)
+    {
+        cout << "Error: La pel·lícula encara no ha estat estrenada.\n";
+    }
+    std::string intro;
+    cout << "Prem Intro per continuar...\n";
+    cin.ignore();
+    getline(cin, intro);
+}
+
+void CapaDePresentacio::visualitzaCapitol() {
+    system("clear");
+    std::string titolSerie;
+    int numeroTemporada, numeroCapitol;
+
+    cout << "** Visualitzar Capítol **\n";
+    cout << "Introdueix el títol de la sèrie: ";
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    getline(cin, titolSerie);
+
+    cout << "Introdueix el número de la temporada: ";
+    cin >> numeroTemporada;
+
+    cout << "Introdueix el número del capítol: ";
+    cin >> numeroCapitol;
+
+    try {
+        TxVisualitzaCapitol tx(titolSerie, numeroTemporada, numeroCapitol);
+        if (tx.executar()) {
+            cout << "Capítol visualitzat correctament!\n";
+        }
+    } catch (const TxVisualitzaCapitol::CapitolNoExisteix &) {
+        cout << "Error: El capítol no existeix.\n";
+    } catch (const TxVisualitzaCapitol::ErrorEdatInadequada &) {
+        cout << "Error: No tens l'edat adequada per veure aquest capítol.\n";
+    } catch (const TxVisualitzaCapitol::CapitolNoEstrenat &) {
+        cout << "Error: El capítol encara no ha estat estrenat.\n";
+    }
+    cout << "Prem Intro per continuar...\n";
+    std::string intro;
+    cin.ignore();
+    getline(cin, intro);
+}
+
+void CapaDePresentacio::consultaVisualitzacions() {
+    system("clear");
+    std::string sobrenomUsuari = Usuari::getUsuariLoggejat()->getSobrenom();
+
+    TxConsultaVisualitzacions tx;
+    tx.executar(sobrenomUsuari);
+
+    auto pelicules = tx.obtePelicules();
+    auto capitols = tx.obteCapitols();
+
+    cout << "Visualitzacions de Pel·lícules:\n";
+    for (const auto& pelicula : pelicules) {
+        cout << "- " << pelicula.first << " (Visualitzacions: " << pelicula.second << ")\n";
+    }
+
+    cout << "\nVisualitzacions de Capítols:\n";
+    for (const auto& capitol : capitols) {
+        cout << "- " << capitol.getTitolSerie() << " Temporada " << capitol.getNumeroTemporada()
+             << ", Capítol " << capitol.getNumeroCapitol() << " (Visualitzacions: " << capitol.getQualificacio() << ")\n";
+    }
+    cin.ignore();
+}
+
+
 
 void CapaDePresentacio::mostraMenuConsultes()
 {
