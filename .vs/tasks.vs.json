@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "tarea-Capitol",
+      "appliesTo": "sistema/Capitol.h",
+      "type": "launch"
+    }
+  ]
+}

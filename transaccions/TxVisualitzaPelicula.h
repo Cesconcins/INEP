@@ -2,9 +2,9 @@
 #define TXVISUALITZAPELICULA_H
 
 #include <string>
-#include "PassarelaPelicula.h"
-#include "PassarelaVisualitzacioPelicula.h"
-#include "Usuari.h"
+#include "../passareles/PassarelaPelicula.h"
+#include "../passareles/PassarelaVisualitzacioPelicula.h"
+#include "../sistema/Usuari.h"
 
 class TxVisualitzaPelicula {
 private:

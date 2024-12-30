@@ -4,8 +4,8 @@
 #include <vector>
 #include <utility>
 #include <string>
-#include "PassarelaVisualitzacioPelicula.h"
-#include "PassarelaVisualitzacioCapitol.h"
+#include "../passareles/PassarelaVisualitzacioPelicula.h"
+#include "../passareles/PassarelaVisualitzacioCapitol.h"
 
 class TxConsultaVisualitzacions {
 private:

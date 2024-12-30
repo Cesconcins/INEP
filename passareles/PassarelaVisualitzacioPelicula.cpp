@@ -1,5 +1,5 @@
 #include "PassarelaVisualitzacioPelicula.h"
-#include "DBConnection.h"
+#include "../sistema/DBConnection.h""
 
 void PassarelaVisualitzacioPelicula::registraVisualitzacio(const std::string& sobrenomUsuari, const std::string& titolPelicula) {
     std::string consulta = "INSERT INTO visualitzacio_pelicula (sobrenom_usuari, titol_pelicula, data, num_visualitzacions) "

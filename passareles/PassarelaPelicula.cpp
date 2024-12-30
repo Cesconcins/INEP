@@ -1,5 +1,5 @@
 #include "PassarelaPelicula.h"
-#include "DBConnection.h"
+#include "../sistema/DBConnection.h""
 
 Pelicula::Pelicula(const std::string& titol, int qualificacio, bool estrenada)
     : titol(titol), qualificacio(qualificacio), estrenada(estrenada) {}

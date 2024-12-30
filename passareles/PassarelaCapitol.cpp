@@ -1,5 +1,5 @@
 #include "PassarelaCapitol.h"
-#include "DBConnection.h"
+#include "../sistema/DBConnection.h"
 
 Capitol::Capitol(const std::string& titolSerie, int numeroTemporada, int numeroCapitol, int qualificacio, bool estrenat)
     : titolSerie(titolSerie), numeroTemporada(numeroTemporada), numeroCapitol(numeroCapitol), qualificacio(qualificacio), estrenat(estrenat) {}
