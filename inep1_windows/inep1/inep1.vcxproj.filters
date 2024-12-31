@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\CapaDePresentacio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cercadors\CercadoraUsuari.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cercadors\CercadoraVisualitzaPel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cercadors\CercadoraVisualitzaSerie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaccions\CtrlModificaUsuari.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sistema\DBConnection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="passareles\PassarellaUsuari.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sistema\PetitFlix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaccions\TxConsultaUsuari.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaccions\TxEsborraUsuari.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaccions\TxInfoVisualitzacions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaccions\TxIniciSessio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaccions\TxRegistraUsuari.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaccions\TxTancaSessio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="sistema\Usuari.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="transaccions\TxConsultaVisualitzacions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\CapaDePresentacio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cercadors\CercadoraUsuari.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cercadors\CercadoraVisualitzaPel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cercadors\CercadoraVisualitzaSerie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transaccions\CtrlModificaUsuari.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sistema\DBConnection.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="passareles\PassarellaUsuari.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sistema\PetitFlix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transaccions\TxConsultaUsuari.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transaccions\TxEsborraUsuari.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transaccions\TxInfoVisualitzacions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transaccions\TxIniciSessio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transaccions\TxRegistraUsuari.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transaccions\TxTancaSessio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sistema\Usuari.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="transaccions\TxConsultaVisualitzacions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sistema\db_config.json">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>
