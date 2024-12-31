@@ -1,41 +1,19 @@
 #include "PassarelaCapitol.h"
 #include "../sistema/DBConnection.h"
 
-Capitol::Capitol(const std::string& titolSerie, int numeroTemporada, int numeroCapitol, int qualificacio, bool estrenat)
-    : titolSerie(titolSerie), numeroTemporada(numeroTemporada), numeroCapitol(numeroCapitol), qualificacio(qualificacio), estrenat(estrenat) {}
-
-std::string Capitol::getTitolSerie() const {
-    return titolSerie;
-}
-
-int Capitol::getNumeroTemporada() const {
-    return numeroTemporada;
-}
-
-int Capitol::getNumeroCapitol() const {
-    return numeroCapitol;
-}
-
-int Capitol::getQualificacio() const {
-    return qualificacio;
-}
-
-bool Capitol::isEstrenat() const {
-    return estrenat;
-}
-
-std::optional<Capitol> PassarelaCapitol::consultaCapitol(const std::string& titolSerie, int numeroTemporada, int numeroCapitol) {
-    std::string consulta = "SELECT titol_serie, numero_temporada, numero_capitol, qualificacio, data_estrena "
+std::unique_ptr<Capitol> PassarelaCapitol::consultaCapitol(const std::string& titolSerie, int numeroTemporada, int numeroCapitol) {
+    std::string consulta = "SELECT titol_serie, numero_temporada, numero_capitol, num_visualitzacions "
                            "FROM capitol WHERE titol_serie = ? AND numero_temporada = ? AND numero_capitol = ?";
     auto resultat = DBConnection::executaConsulta(consulta, {titolSerie, std::to_string(numeroTemporada), std::to_string(numeroCapitol)});
 
     if (resultat.empty()) {
-        return std::nullopt;
+        return nullptr;
     }
 
-    int qualificacio = std::stoi(resultat[0]["qualificacio"]);
-    std::string dataEstrena = resultat[0]["data_estrena"];
-    bool estrenat = (dataEstrena <= "2024-12-30");
-
-    return Capitol(titolSerie, numeroTemporada, numeroCapitol, qualificacio, estrenat);
+    return std::make_unique<Capitol>(
+        resultat[0]["titol_serie"],
+        std::stoi(resultat[0]["numero_temporada"]),
+        std::stoi(resultat[0]["numero_capitol"]),
+        std::stoi(resultat[0]["num_visualitzacions"])
+    );
 }

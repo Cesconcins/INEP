@@ -2,6 +2,7 @@
 #define PASSARELAVISUALITZACIOCAPITOL_H
 
 #include <string>
+#include "../sistema/Capitol.h"
 
 class PassarelaVisualitzacioCapitol {
 public:

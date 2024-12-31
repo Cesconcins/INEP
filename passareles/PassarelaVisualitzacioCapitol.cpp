@@ -1,5 +1,5 @@
 #include "PassarelaVisualitzacioCapitol.h"
-#include "../sistema/DBConnection.h""
+#include "../sistema/DBConnection.h"
 
 void PassarelaVisualitzacioCapitol::registraVisualitzacio(const std::string& sobrenomUsuari, const std::string& titolSerie, int numeroTemporada, int numeroCapitol) {
     std::string consulta = "INSERT INTO visualitzacio_capitol (sobrenom_usuari, titol_serie, numero_temporada, numero_capitol, data, num_visualitzacions) "

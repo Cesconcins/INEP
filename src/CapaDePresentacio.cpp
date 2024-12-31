@@ -302,86 +302,81 @@ std::string CapaDePresentacio::getHiddenInput(const std::string &prompt)
 	return input;
 }
 
-void CapaDePresentacio::mostraMenuVisualitzar()
-{
-	int opcio;
-	do
-	{
-		system("clear");
-		cout << "*********************\n";
-		cout << "    Menu Principal   \n";
-		cout << "*********************\n";
-		cout << "1. Visualitzar pel·lícula\n";
-		cout << "2. Visualitzar capítol\n";
-		cout << "3. Consultar visualitzacions\n";
-		cout << "4. Tornar\n";
-		cout << "Escriu opció: ";
-		cin >> opcio;
 
-		switch (opcio)
-		{
+void CapaDePresentacio::mostraMenuVisualitzar(PetitFlix& pF) {
+	int opcio;
+	do {
+		system("clear");
+		std::cout << "*********************\n";
+		std::cout << "    Menu Principal   \n";
+		std::cout << "*********************\n";
+		std::cout << "1. Visualitzar pel·lícula\n";
+		std::cout << "2. Visualitzar capítol\n";
+		std::cout << "3. Consultar visualitzacions\n";
+		std::cout << "4. Tornar\n";
+		std::cout << "Escriu opció: ";
+		std::cin >> opcio;
+
+		switch (opcio) {
 		case 1:
-			visualitzaPelicula();
+			//visualitzaPelicula(pF);
 			break;
 		case 2:
-			visualitzaCapitol();
+			//visualitzaCapitol();
 			break;
 		case 3:
-			consultaVisualitzacions();
+			//consultaVisualitzacions(pF); 
 			break;
 		case 4:
 			return;
 		default:
-			cout << "Opció no vàlida.\n";
+			std::cout << "Opció no vàlida.\n";
 			break;
 		}
 	} while (true);
 
 	return;
 }
+/*
+void CapaDePresentacio::visualitzaPelicula(PetitFlix& pF) {
+	system("clear");
+	std::string titolPelicula;
 
-void CapaDePresentacio::visualitzaPelicula()
-{
-    system("clear");
-    std::string titolPelicula;
-    cout << "** Visualitzar Pel·lícula **\n";
-    cout << "Introdueix el títol de la pel·lícula: ";
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    getline(cin, titolPelicula);
+	std::cout << "** Visualitzar Pel·lícula **\n";
+	std::cout << "Introdueix el títol de la pel·lícula: ";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::getline(std::cin, titolPelicula);
 
-    try
-    {
-        TxVisualitzaPelicula tx(titolPelicula);
-        if (tx.executar())
-        {
-            cout << "Pel·lícula visualitzada correctament!\n";
-        }
-    }
-    catch (const PeliculaNoExisteix &e)
-    {
-        cout << "Error: La pel·lícula no existeix.\n";
-    }
-    catch (const ErrorEdatInadequada &e)
-    {
-        cout << "Error: No tens l'edat adequada per veure aquesta pel·lícula.\n";
-    }
-    catch (const PeliculaNoEstrenada &e)
-    {
-        cout << "Error: La pel·lícula encara no ha estat estrenada.\n";
-    }
-    std::string intro;
-    cout << "Prem Intro per continuar...\n";
-    cin.ignore();
-    getline(cin, intro);
+	try {
+		TxVisualitzaPelicula tx(titolPelicula); // Se pasa el objeto PetitFlix y el título de la película
+		if (tx.executar()) {
+			std::cout << "Pel·lícula visualitzada correctament!\n";
+		}
+	}
+	catch (const TxVisualitzaPelicula::PeliculaNoExisteix&) {
+		std::cout << "Error: La pel·lícula no existeix.\n";
+	}
+	catch (const TxVisualitzaPelicula::ErrorEdatInadequada&) {
+		std::cout << "Error: No tens l'edat adequada per veure aquesta pel·lícula.\n";
+	}
+	catch (const TxVisualitzaPelicula::PeliculaNoEstrenada&) {
+		std::cout << "Error: La pel·lícula encara no ha estat estrenada.\n";
+	}
+
+	std::cout << "Prem Intro per continuar...\n";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.get();
 }
 
-void CapaDePresentacio::visualitzaCapitol() {
+
+void CapaDePresentacio::visualitzaCapitol()
+{
     system("clear");
     std::string titolSerie;
     int numeroTemporada, numeroCapitol;
 
     cout << "** Visualitzar Capítol **\n";
-    cout << "Introdueix el títol de la sèrie: ";
+    cout << "Introdueix el títol de la série: ";
     cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     getline(cin, titolSerie);
 
@@ -391,47 +386,60 @@ void CapaDePresentacio::visualitzaCapitol() {
     cout << "Introdueix el número del capítol: ";
     cin >> numeroCapitol;
 
-    try {
+    try
+    {
         TxVisualitzaCapitol tx(titolSerie, numeroTemporada, numeroCapitol);
-        if (tx.executar()) {
+        if (tx.executar())
+        {
             cout << "Capítol visualitzat correctament!\n";
         }
-    } catch (const TxVisualitzaCapitol::CapitolNoExisteix &) {
+    }
+    catch (const TxVisualitzaCapitol::CapitolNoExisteix&)
+    {
         cout << "Error: El capítol no existeix.\n";
-    } catch (const TxVisualitzaCapitol::ErrorEdatInadequada &) {
-        cout << "Error: No tens l'edat adequada per veure aquest capítol.\n";
-    } catch (const TxVisualitzaCapitol::CapitolNoEstrenat &) {
+    }
+    catch (const TxVisualitzaCapitol::ErrorEdatInadequada&)
+    {
+        cout << "Error: No tens l'edat adequada per veure aquest cap\u00edtol.\n";
+    }
+    catch (const TxVisualitzaCapitol::CapitolNoEstrenat&)
+    {
         cout << "Error: El capítol encara no ha estat estrenat.\n";
     }
     cout << "Prem Intro per continuar...\n";
-    std::string intro;
-    cin.ignore();
-    getline(cin, intro);
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    cin.get();
 }
 
-void CapaDePresentacio::consultaVisualitzacions() {
-    system("clear");
-    std::string sobrenomUsuari = Usuari::getUsuariLoggejat()->getSobrenom();
+void CapaDePresentacio::consultaVisualitzacions(PetitFlix& pF) {
+	if (!pF.isLoggedIn()) {
+		std::cout << "Error: No hi ha cap usuari loguejat.\n";
+		return;
+	}
 
-    TxConsultaVisualitzacions tx;
-    tx.executar(sobrenomUsuari);
+	std::string sobrenomUsuari = pF.getLoggedInUser(); // Usar getLoggedInUser para obtener el sobrenombre del usuario
+	TxConsultaVisualitzacions tx;
+	tx.executar(sobrenomUsuari);
 
-    auto pelicules = tx.obtePelicules();
-    auto capitols = tx.obteCapitols();
+	auto pelicules = tx.obtePelicules();
+	auto capitols = tx.obteCapitols();
 
-    cout << "Visualitzacions de Pel·lícules:\n";
-    for (const auto& pelicula : pelicules) {
-        cout << "- " << pelicula.first << " (Visualitzacions: " << pelicula.second << ")\n";
-    }
+	std::cout << "Visualitzacions de Pel·lícules:\n";
+	for (const auto& pelicula : pelicules) {
+		std::cout << "- " << pelicula.first << " (Visualitzacions: " << pelicula.second << ")\n";
+	}
 
-    cout << "\nVisualitzacions de Capítols:\n";
-    for (const auto& capitol : capitols) {
-        cout << "- " << capitol.getTitolSerie() << " Temporada " << capitol.getNumeroTemporada()
-             << ", Capítol " << capitol.getNumeroCapitol() << " (Visualitzacions: " << capitol.getQualificacio() << ")\n";
-    }
-    cin.ignore();
+	std::cout << "\nVisualitzacions de Capítols:\n";
+	for (const auto& capitol : capitols) {
+		std::cout << "- " << capitol.getTitolSerie() << " Temporada " << capitol.getNumeroTemporada()
+			<< ", Capítol " << capitol.getNumeroCapitol()
+			<< " (Visualitzacions: " << capitol.getNumVisualitzacions() << ")\n";
+	}
+	std::cout << "Prem Intro per continuar...\n";
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::cin.get();
 }
-
+*/
 
 
 void CapaDePresentacio::mostraMenuConsultes()

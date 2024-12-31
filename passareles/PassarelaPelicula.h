@@ -2,7 +2,6 @@
 #define PASSARELAPELICULA_H
 
 #include <string>
-#include <optional>
 
 class Pelicula {
 private:
@@ -19,7 +18,8 @@ public:
 
 class PassarelaPelicula {
 public:
-    static std::optional<Pelicula> consultaPelicula(const std::string& titol);
+    static Pelicula* consultaPelicula(const std::string& titol);
 };
 
-#endif // PASSARELAPELICULA_H
+#endif
+

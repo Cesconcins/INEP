@@ -18,3 +18,4 @@ int Capitol::getNumeroCapitol() const {
 int Capitol::getNumVisualitzacions() const {
     return numVisualitzacions;
 }
+

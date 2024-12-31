@@ -3,23 +3,7 @@
 
 #include <string>
 #include <optional>
-
-class Capitol {
-private:
-    std::string titolSerie;
-    int numeroTemporada;
-    int numeroCapitol;
-    int qualificacio;
-    bool estrenat;
-
-public:
-    Capitol(const std::string& titolSerie, int numeroTemporada, int numeroCapitol, int qualificacio, bool estrenat);
-    std::string getTitolSerie() const;
-    int getNumeroTemporada() const;
-    int getNumeroCapitol() const;
-    int getQualificacio() const;
-    bool isEstrenat() const;
-};
+#include "../sistema/Capitol.h"
 
 class PassarelaCapitol {
 public:
@@ -27,3 +11,14 @@ public:
 };
 
 #endif // PASSARELACAPITOL_H
+
+
+=== PassarelaCapitol.cpp ===
+#include "PassarelaCapitol.h"
+
+std::optional<Capitol> PassarelaCapitol::consultaCapitol(const std::string& titolSerie, int numeroTemporada, int numeroCapitol) {
+    // Simula una consulta a la base de datos
+    // Puedes agregar lógica para recuperar un Capitol real
+    return Capitol(titolSerie, numeroTemporada, numeroCapitol, 0); // Ejemplo con valores por defecto
+}
+

@@ -2,9 +2,7 @@
 #define TXVISUALITZACAPITOL_H
 
 #include <string>
-#include "../passareles/PassarelaCapitol.h"
-#include "../passareles/PassarelaVisualitzacioCapitol.h"
-#include "../sistema/Usuari.h"
+#include "../sistema/Capitol.h"
 
 class TxVisualitzaCapitol {
 private:

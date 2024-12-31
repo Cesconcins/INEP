@@ -42,15 +42,15 @@ public:
 
 	std::string getHiddenInput(const std::string &prompt);
 
-	void mostraMenuVisualitzar();
+	void mostraMenuVisualitzar(PetitFlix& pF);
 
 	void mostraMenuConsultes();
 
-	void visualitzaPelicula();
+	void visualitzaPelicula(PetitFlix& pF);
 
 	void visualitzaCapitol();
 
-	void consultaVisualitzacions();
+	void consultaVisualitzacions(PetitFlix& pF);
 };
 
 #endif
